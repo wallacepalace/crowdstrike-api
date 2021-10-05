@@ -41,7 +41,7 @@ if ($Platform.Length -gt 0) {
 }
 
 # Puxa os detalhes das variáveis acima e carregam no payload seguinte
-Get-FalconHost -Detailed -Filter $Filter -OutVariable HostIds | Out-Null
+Get-FalconHost -Detailed -All -Filter $Filter -OutVariable HostIds | Out-Null
 
 # Payload que executa o comando final com as variáveis preload
 Invoke-FalconRTR -Command 'update install' -Arguments $kb -HostId $HostIds.device_id | ConvertTo-Json >> resultado-kbs.json
