@@ -47,7 +47,7 @@ if ($Platform.Length -gt 0) {
 }
 
 # Puxa os detalhes das variáveis acima e carregam no payload seguinte
-Get-FalconHost -Detailed -Filter $Filter -OutVariable HostIds | Out-Null
+Get-FalconHost -Detailed -All -Filter $Filter -OutVariable HostIds | Out-Null
 
 # Payload que executa o comando final com as variáveis preload
 Invoke-FalconRTR -Command runscript -Arguments -Raw="'$($command)'" -HostId $HostIds.device_id | ConvertTo-Csv >> resultado-individual.csv
